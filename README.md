@@ -1,2 +1,5 @@
 # toDo-app
-ToDo app develop at Curso Javascript - RocketSeat
+To Do app develop in Rocketseat starter course of JavaScript
+
+<https://skylab.rocketseat.com.br/journey/starter>
+
