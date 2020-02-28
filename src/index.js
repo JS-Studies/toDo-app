@@ -1,7 +1,7 @@
 const listOfToDos = document.querySelector('#app ul');
 const inputValue = document.querySelector('#app input');
 const addButton = document.querySelector('#app button')
-var toDos = [];
+var toDos = JSON.parse(localStorage.getItem('list_todos')) || [];
 
 function renderToDos(){
 	listOfToDos.innerHTML = '';
@@ -33,11 +33,17 @@ function addToList() {
 	toDos.push(inputValue.value);
 	inputValue.value = "";
 	renderToDos();
+	saveToStorage();
 }
 
 function deleteTodo(position){
 	toDos.splice(position, 1);
 	renderToDos();
+	saveToStorage();
 }
 
 addButton.onclick = addToList;
+
+function saveToStorage(){
+	localStorage.setItem('list_todos', JSON.stringify(toDos));
+}
