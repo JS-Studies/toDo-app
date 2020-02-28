@@ -8,13 +8,23 @@ function renderToDos(){
 
 	for(todo of toDos){
 		var toDo = document.createElement('li');
-		var edit = document.createElement('a');
-		var deleteButton = document.createElement('a');
 		var todoText = document.createTextNode(todo);
+
+		var edit = document.createElement('a');
+		
+		var deleteButton = document.createElement('a');
+		var deleteButtonText = document.createTextNode('Excluir');
+
+		deleteButton.appendChild(deleteButtonText);
+		deleteButton.setAttribute('href', '#');
+
+		var pos = toDos.indexOf(todo);
+		deleteButton.setAttribute('onclick', 'deleteTodo('+ pos +')');
 		
 		toDo.appendChild(todoText);
 		toDo.appendChild(edit);
 		toDo.appendChild(deleteButton);
+	
 		listOfToDos.appendChild(toDo);	
 	}
 }
@@ -22,6 +32,11 @@ function renderToDos(){
 function addToList() {
 	toDos.push(inputValue.value);
 	inputValue.value = "";
+	renderToDos();
+}
+
+function deleteTodo(position){
+	toDos.splice(position, 1);
 	renderToDos();
 }
 
